@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from users.models import RegionModel, B, S
+from users.models import RegionModel, B, S, R1, R2, R3, R4, R5, R6
 
 class LoginView(APIView):
     def get(self, request, *args, **kwargs):
@@ -70,6 +70,60 @@ class TablesView2(APIView):
     def get(self, request, *args, **kwargs):
         results = S.objects.all()
         return render(request, "theme/tables2.html", {'results':results})
+
+    def post(self, request, *args, **kwargs):
+
+        return Response({'status': 200})
+    
+class TablesView3(APIView):
+    def get(self, request, *args, **kwargs):
+        results = R1.objects.all()
+        return render(request, "theme/tables3.html", {'results':results})
+
+    def post(self, request, *args, **kwargs):
+
+        return Response({'status': 200})
+    
+class TablesView4(APIView):
+    def get(self, request, *args, **kwargs):
+        results = R2.objects.all()
+        return render(request, "theme/tables4.html", {'results':results})
+
+    def post(self, request, *args, **kwargs):
+
+        return Response({'status': 200})
+    
+class TablesView5(APIView):
+    def get(self, request, *args, **kwargs):
+        results = R3.objects.all()
+        return render(request, "theme/tables5.html", {'results':results})
+
+    def post(self, request, *args, **kwargs):
+
+        return Response({'status': 200})
+    
+class TablesView6(APIView):
+    def get(self, request, *args, **kwargs):
+        results = R4.objects.all()
+        return render(request, "theme/tables6.html", {'results':results})
+
+    def post(self, request, *args, **kwargs):
+
+        return Response({'status': 200})
+    
+class TablesView7(APIView):
+    def get(self, request, *args, **kwargs):
+        results = R5.objects.all()
+        return render(request, "theme/tables7.html", {'results':results})
+
+    def post(self, request, *args, **kwargs):
+
+        return Response({'status': 200})
+    
+class TablesView8(APIView):
+    def get(self, request, *args, **kwargs):
+        results = R6.objects.all()
+        return render(request, "theme/tables8.html", {'results':results})
 
     def post(self, request, *args, **kwargs):
 

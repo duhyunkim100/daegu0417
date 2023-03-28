@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Tables {% endblock %}
+
+
+{% block css %}
+<!-- Custom styles for this page -->
+<link href="{% static 'vendor/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block container_fluid %}
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Students Forcast of Region</h1>
+    <p class="mb-4">대구광역시 10개년 지역별 학생 수 예측 2학년</p>
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <!-- <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+        </div> -->
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>예측년도</th>
+                            <th>월배</th>
+                            <th>성서</th>
+                            <th>수성</th>
+                            <th>칠곡</th>
+                            <th>동부</th>
+                            <th>서부</th>
+                            <th>북부</th>
+                            <th>남부</th>
+                            <th>동대구</th>
+                            <th>달성</th>
+                            <th>중부</th>
+                            <th>모델</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for db in results %}
+                            <tr>
+                                <td>{{ db.예측년도 }}</td>
+                                <td>{{ db.월배 }}</td>
+                                <td>{{ db.성서 }}</td>
+                                <td>{{ db.수성 }}</td>
+                                <td>{{ db.칠곡 }}</td>
+                                <td>{{ db.동부 }}</td>
+                                <td>{{ db.서부 }}</td>
+                                <td>{{ db.북부 }}</td>
+                                <td>{{ db.남부 }}</td>
+                                <td>{{ db.동대구 }}</td>
+                                <td>{{ db.달성 }}</td>
+                                <td>{{ db.중부 }}</td>
+                                <td>{{ db.모델 }}</td>
+                            </tr>
+                        {% endfor %}                      
+                    </tbody>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js_body %}
+<!-- Data Tables -->
+<script src="{% static 'vendor/datatables/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'vendor/datatables/dataTables.bootstrap4.min.js' %}"></script>
+<script src="{% static 'js/demo/datatables-demo.js' %}"></script>
+{% endblock %}

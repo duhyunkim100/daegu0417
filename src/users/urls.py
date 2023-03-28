@@ -16,6 +16,12 @@ urlpatterns = [
     re_path(r'^tables/$', views.TablesView.as_view(), name="tables_url"),
     re_path(r'^tables1/$', views.TablesView1.as_view(), name="tables1_url"),
     re_path(r'^tables2/$', views.TablesView2.as_view(), name="tables2_url"),
+    re_path(r'^tables3/$', views.TablesView3.as_view(), name="tables3_url"),
+    re_path(r'^tables4/$', views.TablesView4.as_view(), name="tables4_url"),
+    re_path(r'^tables5/$', views.TablesView5.as_view(), name="tables5_url"),
+    re_path(r'^tables6/$', views.TablesView6.as_view(), name="tables6_url"),
+    re_path(r'^tables7/$', views.TablesView7.as_view(), name="tables7_url"),
+    re_path(r'^tables8/$', views.TablesView8.as_view(), name="tables8_url"),
 
     re_path(r'^buttons/$', views.ButtonsView.as_view(), name="buttons_url"),
 
