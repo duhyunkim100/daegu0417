@@ -1,0 +1,444 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Tables {% endblock %}
+
+
+{% block css %}
+<!-- Custom styles for this page -->
+<link href="{% static 'vendor/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block container_fluid %}
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Map Views</h1>
+    <p class="mb-4">학교 검색과 위치</p>
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>학교명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for db in results %}
+                        <tr>
+                            <td><a href= {db.학교명}>{{db.학교명}}</a></td>
+                        </tr>
+                    {% endfor %}                      
+                </tbody>
+                </tfoot>
+            </table>
+              <div class="col-sd-6 col-sm-12 col-xs-12">
+                <html>
+                  <head>
+                    <style>
+                    #map {
+                      height: 400px;
+                      width: 100%;
+                    }
+                    </style>
+                    </head>
+                    <body>
+                      <h3 id="leehojun">My Google Maps Demo</h3>
+                      <div id="map"></div>
+                      <script src="marker.js"></script>
+                      <script>
+                      function initMap() {
+                        var daegu = {lat: 35.8714354, lng: 128.601445};
+                        var map = new google.maps.Map(document.getElementById('map'), {
+                          zoom: 11,
+                          center: daegu
+                        });
+                        
+                        var marker = new google.maps.Marker({
+                          position: daegu,
+                          map: map
+                        });
+
+                        var infowindow = new google.maps.InfoWindow();
+                        marker.addListener("click", () => {
+                          infowindow.setContent(content);
+                          infowindow.open({
+                            anchor: marker,
+                            map,
+                          });
+                        });   
+                        
+                        var marker = new google.maps.Marker({
+                          position: {lat: 35.86357598, lng: 128.5983647},
+                          map: map
+                        });
+                        
+                        var marker = new google.maps.Marker({
+                          content: "경북대학교사범대학부설초등학교",
+                          position: {lat: 35.86357598, lng: 128.5983647},
+                          map: map
+                        });
+
+                        var marker = new google.maps.Marker({
+                          content: "계성초등학교",
+                          position: {lat: 35.86566471, lng: 128.5811278},
+                          map: map
+                        });
+
+                        var marker = new google.maps.Marker({
+                          content: "남대구초등학교",
+                          position: {lat: 35.8535697, lng: 128.5864801},
+                          map: map
+                        });
+                        
+                        var marker = new google.maps.Marker({
+                          content: "대구가창초등학교",
+                          position: {lat: 35.77102937, lng: 128.6482703},
+                          map: map
+                        });
+
+                        var marker = new google.maps.Marker({
+                          content: "대구감삼초등학교",
+                          position: {lat: 35.84914399, lng: 128.545555},
+                          map: map
+                        });
+
+                        var marker = new google.maps.Marker({
+                          content: "대구감천초등학교",
+                          position: {lat: 35.83522361, lng: 128.5330966},
+                          map: map
+                        });
+
+                        var marker = new google.maps.Marker({
+                          content: "대구강동초등학교",
+                          position: {lat: 35.86805865, lng: 128.7299007},
+                          map: map
+                        });
+
+                        var marker = new google.maps.Marker({
+                          content: "대구강림초등학교",
+                          position: {lat: 35.78124474, lng: 128.4367988},
+                          map: map
+                        });
+
+                        var marker = new google.maps.Marker({
+                          content: "대구강북초등학교",
+                          position: {lat: 35.94086182, lng: 128.5667658},
+                          map: map
+                        });
+
+                        var marker = new google.maps.Marker({
+                          content: "대구경동초등학교",
+                          position: {lat: 35.85220646, lng: 128.6393793},
+                          map: map
+                        });
+
+                        var marker = new google.maps.Marker({
+                          content: "대구경운초등학교",
+                          position: {lat: 35.86088038, lng: 128.5527191},
+                          map: map
+                        });
+
+                        var marker = new google.maps.Marker({
+                          content: "대구경진초등학교",
+                          position: {lat: 35.8920273, lng: 128.6170925},
+                          map: map
+                        });
+
+                        var marker = new google.maps.Marker({
+                          content: "대구고산초등학교",
+                          position: {lat: 35.84395419, lng: 128.693156},
+                          map: map
+                        });
+                        
+                        var marker = new google.maps.Marker({
+                          content: "대구공산초등학교",
+                          position: {lat: 35.9564807, lng: 128.6906261},
+                          map: map
+                        });
+                        
+                        var marker = new google.maps.Marker({
+                          content: "대구관남초등학교",
+                          position: {lat: 35.93683639, lng: 128.54779},
+                          map: map
+                        });
+                        
+                        var marker = new google.maps.Marker({
+                          content: "대구관문초등학교",
+                          position: {lat: 35.90869955, lng: 128.5461555},
+                          map: map
+                        });
+                        
+                        var marker = new google.maps.Marker({
+                          content: "대구관음초등학교",
+                          position: {lat: 35.93992241, lng: 128.5471137},
+                          map: map
+                        });
+                        
+                        var marker = new google.maps.Marker({
+                          content: "대구관천초등학교",
+                          position: {lat: 35.93057093, lng: 128.5520401},
+                          map: map
+                        });
+                        
+                        var marker = new google.maps.Marker({
+                          content: "대구교동초등학교",
+                          position: {lat: 35.94475315, lng: 128.5494327},
+                          map: map
+                        });
+                        
+                        var marker = new google.maps.Marker({
+                          content: "대구교육대학교대구부설초등학교",
+                          position: {lat: 35.80596892, lng: 128.5323853},
+                          map: map
+                        });
+                        
+                        var marker = new google.maps.Marker({
+                          content: "대구구암초등학교",
+                          position: {lat: 35.92814386, lng: 128.5577604},
+                          map: map
+                        });
+                        
+                        var marker = new google.maps.Marker({
+                          content: "대구구지초등학교",
+                          position: {lat: 35.66021157, lng: 128.4125564},
+                          map: map
+                        });
+                        
+                        var marker = new google.maps.Marker({
+                          content: "대구금계초등학교",
+                          position: {lat: 35.78883806, lng: 128.4437334},
+                          map: map
+                        });
+                        
+                        var marker = new google.maps.Marker({
+                          content: "대구금포초등학교",
+                          position: {lat: 35.77429302, lng: 128.4254986},
+                          map: map
+                        });
+                        
+                        var marker = new google.maps.Marker({
+                          content: "대구남덕초등학교",
+                          position: {lat: 35.83307955, lng: 128.573819},
+                          map: map
+                        });
+                        
+                        var marker = new google.maps.Marker({
+                          content: "대구남도초등학교",
+                          position: {lat: 35.84430767, lng: 128.5811236},
+                          map: map
+                        });
+                        
+                        var marker = new google.maps.Marker({
+                          content: "대구남동초등학교",
+                          position: {lat: 35.72463823, lng: 128.456469},
+                          map: map
+                        });
+                        
+                        var marker = new google.maps.Marker({
+                          content: "대구남명초등학교",
+                          position: {lat: 35.83436385, lng: 128.5819866},
+                          map: map
+                        });
+                        
+                        var marker = new google.maps.Marker({
+                          content: "대구남부초등학교",
+                          position: {lat: 35.844179, lng: 128.550165},
+                          map: map
+                        });
+                        
+                        var marker = new google.maps.Marker({
+                          content: "대구남산초등학교",
+                          position: {lat: 35.86322075, lng: 128.5827674},
+                          map: map
+                        });
+                        
+                        var marker = new google.maps.Marker({
+                          content: "대구남송초등학교",
+                          position: {lat: 35.83490796, lng: 128.5453631},
+                          map: map
+                        });
+                        
+                        var marker = new google.maps.Marker({
+                          content: "대구내당초등학교",
+                          position: {lat: 35.86063972, lng: 128.5723832},
+                          map: map
+                        });
+                        
+                        var marker = new google.maps.Marker({
+                          content: "대구내서초등학교",
+                          position: {lat: 35.86401125, lng: 128.5669722},
+                          map: map
+                        });
+                        
+                        var marker = new google.maps.Marker({
+                          content: "대구노변초등학교",
+                          position: {lat: 35.83774464, lng: 128.6976282},
+                          map: map
+                        });
+                        
+                        var marker = new google.maps.Marker({
+                          content: "대구노전초등학교",
+                          position: {lat: 35.80817454, lng: 128.5312233},
+                          map: map
+                        });
+                        
+                        var marker = new google.maps.Marker({
+                          content: "대구논공초등학교",
+                          position: {lat: 35.73103879, lng: 128.4376482},
+                          map: map
+                        });
+                        
+                        var marker = new google.maps.Marker({
+                          content: "대구다사초등학교",
+                          position: {lat: 35.8694288, lng: 128.4584848},
+                          map: map
+                        });
+                        
+                        var marker = new google.maps.Marker({
+                          content: "대구달산초등학교",
+                          position: {lat: 35.88770026, lng: 128.5851901},
+                          map: map
+                        });
+                        
+                        var marker = new google.maps.Marker({
+                          content: "대구달서초등학교",
+                          position: {lat: 35.86684409, lng: 128.5505158},
+                          map: map
+                        });
+                        
+                        var marker = new google.maps.Marker({
+                          content: "대구달성초등학교",
+                          position: {lat: 35.88278444, lng: 128.5796645},
+                          map: map
+                        });
+                        
+                        var marker = new google.maps.Marker({
+                          content: "대구대곡초등학교",
+                          position: {lat: 35.8032986, lng: 128.5357039},
+                          map: map
+                        });
+                        
+                        var marker = new google.maps.Marker({
+                          content: "대구대남초등학교",
+                          position: {lat: 35.8241878, lng: 128.5517486},
+                          map: map
+                        });
+                        
+                        var marker = new google.maps.Marker({
+                          content: "대구대덕초등학교",
+                          position: {lat: 35.8304366, lng: 128.5616736},
+                          map: map
+                        });
+                        
+                        var marker = new google.maps.Marker({
+                          content: "대구대동초등학교",
+                          position: {lat: 35.8973687, lng: 128.6118383},
+                          map: map
+                        });
+                        
+                        var marker = new google.maps.Marker({
+                          content: "대구대명초등학교",
+                          position: {lat: 35.83886938, lng: 128.5688899},
+                          map: map
+                        });
+                        
+                        var marker = new google.maps.Marker({
+                          content: "대구대봉초등학교",
+                          position: {lat: 35.85170436, lng: 128.6048223},
+                          map: map
+                        });
+                        
+                        var marker = new google.maps.Marker({
+                          content: "대구대산초등학교",
+                          position: {lat: 35.89611556, lng: 128.5931912},
+                          map: map
+                        });
+                        
+                        var marker = new google.maps.Marker({
+                          content: "대구대서초등학교",
+                          position: {lat: 35.82034381, lng: 128.549858},
+                          map: map
+                        });
+                        
+                        var marker = new google.maps.Marker({
+                          content: "대구대성초등학교",
+                          position: {lat: 35.87040591, lng: 128.5771526},
+                          map: map
+                        });
+                        
+                        var marker = new google.maps.Marker({
+                          content: "대구대실초등학교",
+                          position: {lat: 35.85308854, lng: 128.4678979},
+                          map: map
+                        });
+                        
+                        var marker = new google.maps.Marker({
+                          content: "대구대진초등학교",
+                          position: {lat: 35.80662654, lng: 128.5217068},
+                          map: map
+                        });
+                        
+                        var marker = new google.maps.Marker({
+                          content: "대구대천초등학교",
+                          position: {lat: 35.93720911, lng: 128.5543646},
+                          map: map
+                        });
+                        
+                        var marker = new google.maps.Marker({
+                          content: "대구대청초등학교",
+                          position: {lat: 35.85094094, lng: 128.6500462},
+                          map: map
+                        });
+                        
+                        var marker = new google.maps.Marker({
+                          content: "대구덕성초등학교",
+                          position: {lat: 35.88210504, lng: 128.6284765},
+                          map: map
+                        });
+                        
+                        var marker = new google.maps.Marker({
+                          content: "대구덕인초등학교",
+                          position: {lat: 35.83856871, lng: 128.5344725},
+                          map: map
+                        });
+                        
+                        var marker = new google.maps.Marker({
+                          content: "대구도남초등학교",
+                          position: {lat: 35.94866015, lng: 128.5771887},
+                          map: map
+                        });
+                        
+                        var marker = new google.maps.Marker({
+                          content: "대구도림초등학교",
+                          position: {lat: 35.87816722, lng: 128.4995392},
+                          map: map
+                        });
+                        
+                        var marker = new google.maps.Marker({
+                          content: "계성초등학교",
+                          position: {lat: 35.86566471, lng: 128.5811278},
+                          map: map
+                        });                    
+                       
+                      }
+                      </script>
+                      <script async defer
+                      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCdKrZSsLIuxHuu59UCARaAvUtcmaMmBeU&callback=initMap">
+                    </script>
+                    </body>
+                    </html>
+                  </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js_body %}
+<!-- Data Tables -->
+<script src="{% static 'vendor/datatables/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'vendor/datatables/dataTables.bootstrap4.min.js' %}"></script>
+<script src="{% static 'js/demo/datatables-demo.js' %}"></script>
+{% endblock %}

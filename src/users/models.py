@@ -143,3 +143,16 @@ class R6(models.Model):
     달성 = models.FloatField()
     중부 = models.FloatField()
     모델 = models.CharField(max_length=30)
+
+class SchoolName(models.Model):
+    id = models.IntegerField(primary_key=True)
+    학교명 = models.CharField(max_length=30)
+
+class BaBies(models.Model):
+    id = models.IntegerField(primary_key=True)
+    출생년도 = models.FloatField()
+    입학년도 = models.FloatField()
+    ARIMA = models.FloatField()
+    SSM = models.FloatField()
+    DLDA = models.FloatField()
+    CRU = models.FloatField()

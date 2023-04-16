@@ -1,4 +1,4 @@
-from django.urls import re_path, path 
+from django.urls import re_path, path , include
 from . import views
 
 app_name = "users"
@@ -40,4 +40,5 @@ urlpatterns = [
 
 	re_path(r'^others/$', views.OthersView.as_view(), name="others_url"),    
 
+    re_path(r'^map/$', views.Map_View.as_view(), name="map_view_url"),
 ]

@@ -1,4 +1,3 @@
-// Set new default font family and font color to mimic Bootstrap's default styling
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#858796';
 
@@ -26,20 +25,56 @@ function number_format(number, decimals, dec_point, thousands_sep) {
   }
   return s.join(dec);
 }
-
 // Bar Chart Example
 var ctx = document.getElementById("myBarChart");
 var myBarChart = new Chart(ctx, {
-  type: 'bar',
+  type: 'line',
   data: {
-    labels: ["January", "February", "March", "April", "May", "June"],
+    labels: ["2014년", "2015년", "2016년", "2017년", "2018년", "2019년", "2020년", "2021년", "2022년", "2023년", "2024년"],
     datasets: [{
-      label: "Revenue",
-      backgroundColor: "#4e73df",
-      hoverBackgroundColor: "#2e59d9",
-      borderColor: "#4e73df",
-      data: [4215, 5312, 6251, 7841, 9821, 14984],
-    }],
+      label: "ARIMA",
+      lineTension: 0.3,
+      backgroundColor: "rgba(78, 115, 223, 0.05)",
+      borderColor: "rgba(78, 115, 223, 1)",
+      pointRadius: 3,
+      pointBackgroundColor: "rgba(78, 115, 223, 1)",
+      pointBorderColor: "rgba(78, 115, 223, 1)",
+      pointHoverRadius: 3,
+      pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
+      pointHoverBorderColor: "rgba(78, 115, 223, 1)",
+      pointHitRadius: 10,
+      pointBorderWidth: 2,
+      data: [18688.0, 18738.5, 18284.5, 16601.0, 14717.5, 13444.5, 11915.5, 10671.5, 9632.4, 8408.5, 7153.7]
+    }, {
+      label: "SSM",
+      lineTension: 0.3,
+      backgroundColor: "rgba(255, 99, 132, 0.05)",
+      borderColor: "rgba(255, 99, 132, 0.05)",
+      pointRadius: 3,
+      pointBackgroundColor: "rgba(255, 99, 132, 0.05)",
+      pointBorderColor: "rgba(255, 99, 132, 0.05)",
+      pointHoverRadius: 3,
+      pointHoverBackgroundColor: "rgba(255, 99, 132, 0.05)",
+      pointHoverBorderColor: "rgba(255, 99, 132, 0.05)",
+      pointHitRadius: 10,
+      pointBorderWidth: 2,
+      data: [18688.0, 18738.5, 18284.5, 16601.0, 14717.5, 13444.5, 11915.5, 10671.5, 10187.84, 8564.846, 7611.496]
+    }, {
+      label: "DLDA",
+      lineTension: 0.3,
+      backgroundColor: "rgba(54, 162, 235, 0.05)",
+      borderColor: "rgba(54, 162, 235, 0.05)",
+      pointRadius: 3,
+      pointBackgroundColor: "rgba(54, 162, 235, 0.05)",
+      pointBorderColor: "rgba(54, 162, 235, 0.05)",
+      pointHoverRadius: 3,
+      pointHoverBackgroundColor: "rgba(54, 162, 235, 0.05)",
+      pointHoverBorderColor: "rgba(54, 162, 235, 0.05)",
+      pointHitRadius: 10,
+      pointBorderWidth: 2,
+      data: [18688.0, 18738.5, 18284.5, 16601.0, 14717.5, 13444.5, 11915.5, 10671.5, 9198.291, 8037.506, 7078.614]
+    },
+    ],
   },
   options: {
     maintainAspectRatio: false,
@@ -54,26 +89,22 @@ var myBarChart = new Chart(ctx, {
     scales: {
       xAxes: [{
         time: {
-          unit: 'month'
+          unit: 'date'
         },
         gridLines: {
           display: false,
           drawBorder: false
         },
         ticks: {
-          maxTicksLimit: 6
-        },
-        maxBarThickness: 25,
+          maxTicksLimit: 7
+        }
       }],
       yAxes: [{
         ticks: {
-          min: 0,
-          max: 15000,
           maxTicksLimit: 5,
           padding: 10,
-          // Include a dollar sign in the ticks
           callback: function(value, index, values) {
-            return '$' + number_format(value);
+            return number_format(value);
           }
         },
         gridLines: {
@@ -86,26 +117,7 @@ var myBarChart = new Chart(ctx, {
       }],
     },
     legend: {
-      display: false
-    },
-    tooltips: {
-      titleMarginBottom: 10,
-      titleFontColor: '#6e707e',
-      titleFontSize: 14,
-      backgroundColor: "rgb(255,255,255)",
-      bodyFontColor: "#858796",
-      borderColor: '#dddfeb',
-      borderWidth: 1,
-      xPadding: 15,
-      yPadding: 15,
-      displayColors: false,
-      caretPadding: 10,
-      callbacks: {
-        label: function(tooltipItem, chart) {
-          var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-          return datasetLabel + ': $' + number_format(tooltipItem.yLabel);
-        }
-      }
+      display: true
     },
   }
 });

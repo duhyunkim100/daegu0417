@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from users.models import RegionModel, B, S, R1, R2, R3, R4, R5, R6
+from users.models import RegionModel, B, S, R1, R2, R3, R4, R5, R6, SchoolName, BaBies
+import csv
 
 class LoginView(APIView):
     def get(self, request, *args, **kwargs):
@@ -50,7 +51,7 @@ class ChartsView(APIView):
 
 class TablesView(APIView):
     def get(self, request, *args, **kwargs):
-        results = B.objects.all()
+        results = BaBies.objects.all()
         return render(request, "theme/tables.html", {'results':results})
 
     def post(self, request, *args, **kwargs):
@@ -214,6 +215,24 @@ class OthersView(APIView):
 class DashboardView(APIView):
     def get(self, request, *args, **kwargs):
         return render(request, "users/dashboard.html", {})
+
+    def post(self, request, *args, **kwargs):
+
+        return Response({'status': 200})
+
+class Map_View(APIView):
+    def get(self, request, *args, **kwargs):
+        # with open('C:/Users/kdh15/sbadmin/xy.csv', 'r', encoding='utf-8') as f:
+        #     reader = csv.reader(f)
+        #     data = []
+        #     for row in reader:
+        #         data.append({'longitude': row[1], 'latitude': row[0]})
+        # df = open('C:\Users\kdh15\sbadmin\location.csv', 'r',encoding = 'utf-8')
+        # rdr = csv.reader(df)
+        # for line in rdr:
+            
+        results = SchoolName.objects.all()
+        return render(request, "theme/map.html", {'results':results})
 
     def post(self, request, *args, **kwargs):
 

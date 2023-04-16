@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # 'map.apps.MapConfig',
+    # 'map',
+    
 
     # 3rd party apps
     "rest_framework",
@@ -44,6 +47,7 @@ INSTALLED_APPS = [
     # User apps
     "users.apps.UsersConfig",
     
+    # 'leaflet'
 ]
 
 MIDDLEWARE = [
@@ -112,7 +116,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ko-kr'
 
 TIME_ZONE = 'UTC'
 
